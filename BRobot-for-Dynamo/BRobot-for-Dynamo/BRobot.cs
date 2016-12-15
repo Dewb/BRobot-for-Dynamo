@@ -11,6 +11,7 @@ using Autodesk.DesignScript.Geometry;
 using BRobot;
 using BAction = BRobot.Action;
 using BPoint = BRobot.Point;
+using Tool = BRobot.Tool;
 
 namespace BRobot
 {
@@ -160,6 +161,15 @@ namespace BRobot
             return new ActionPushPop(false);
         }
 
+		/// <summary>
+		/// Sets the tool geometry that will apply to future actions.
+		/// </summary>
+		/// <param name="tool">Tool object</param>
+		/// <returns name="action">Increase Speed Action</returns>
+		public static BAction Tool(Tool tool)
+		{
+			return new ActionTool(tool);
+		}
 
 
 
@@ -291,6 +301,16 @@ namespace BRobot
             return new ActionMessage(message);
         }
 
+		/// <summary>
+		/// Turns the named digital output on or off
+		/// </summary>
+		/// <param name="name">The name of the output</param>
+		/// <param name="on">true for high, false for low</param>
+		/// <returns name="action">Message Action</returns>
+		public static BAction SetDigitalOutput(string name, bool on)
+		{
+			return new ActionDigitalOutput(name, on);
+		}
         
 
 
